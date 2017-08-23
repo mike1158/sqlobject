@@ -7,7 +7,7 @@ version: '{branch}-{build}'
 # Other branches can allow themselves.
 branches:
   only:
-    - master
+    - pypostgresql
 skip_branch_with_pr: false
 skip_tags: true
 
@@ -18,11 +18,9 @@ cache:
 clone_depth: 50
 
 services:
-  - mysql
   - postgresql
 
 environment:
-  MYSQL_PWD: "Password12!"
   PGUSER: "postgres"
   PGPASSWORD: "Password12!"
 
@@ -33,106 +31,6 @@ environment:
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\run_with_env.cmd"
 
   matrix:
-    - TOX_ENV: "py27-mssql-pyodbc-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27"
-      db: mssql2014
-    - TOX_ENV: "py34-mssql-pyodbc-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34-x64"
-      db: mssql2014
-    - TOX_ENV: "py27-mysql-connector-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27"
-      db: mysql
-    - TOX_ENV: "py34-mysql-connector-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34"
-      db: mysql
-    - TOX_ENV: "py35-mysql-connector-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35"
-      db: mysql
-    - TOX_ENV: "py36-mysql-connector-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36"
-      db: mysql
-    - TOX_ENV: "py27-mysql-pyodbc-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27-x64"
-      db: mysql
-    - TOX_ENV: "py34-mysql-pyodbc-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34-x64"
-      db: mysql
-    - TOX_ENV: "py27-postgres-psycopg-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27"
-      db: postgresql
-    - TOX_ENV: "py27-postgres-psycopg-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27-x64"
-      db: postgresql
-    - TOX_ENV: "py34-postgres-psycopg-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34"
-      db: postgresql
-    - TOX_ENV: "py34-postgres-psycopg-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34-x64"
-      db: postgresql
-    - TOX_ENV: "py35-postgres-psycopg-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35"
-      db: postgresql
-    - TOX_ENV: "py35-postgres-psycopg-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35-x64"
-      db: postgresql
-    - TOX_ENV: "py36-postgres-psycopg-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36"
-      db: postgresql
-    - TOX_ENV: "py36-postgres-psycopg-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36-x64"
-      db: postgresql
-    - TOX_ENV: "py27-postgres-pygresql-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27-x64"
-      db: postgresql
-    - TOX_ENV: "py34-postgres-pygresql-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34-x64"
-      db: postgresql
-    - TOX_ENV: "py35-postgres-pygresql-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35-x64"
-      db: postgresql
-    - TOX_ENV: "py36-postgres-pygresql-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36-x64"
-      db: postgresql
     - TOX_ENV: "py34-pypostgresql-w32"
       PYTHON_ARCH: "32"
       PYTHON_VERSION: "3.4"
@@ -143,124 +41,6 @@ environment:
       PYTHON_VERSION: "3.4"
       PYTHON_HOME: "C:\\Python34-x64"
       db: postgresql
-    - TOX_ENV: "py35-pypostgresql-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35"
-      db: postgresql
-    - TOX_ENV: "py35-pypostgresql-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35-x64"
-      db: postgresql
-    - TOX_ENV: "py36-pypostgresql-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36"
-      db: postgresql
-    - TOX_ENV: "py36-pypostgresql-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36-x64"
-      db: postgresql
-    - TOX_ENV: "py27-postgres-pg8000-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27"
-      db: postgresql
-    - TOX_ENV: "py27-postgres-pg8000-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27-x64"
-      db: postgresql
-    - TOX_ENV: "py34-postgres-pg8000-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34"
-      db: postgresql
-    - TOX_ENV: "py34-postgres-pg8000-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34-x64"
-      db: postgresql
-    - TOX_ENV: "py35-postgres-pg8000-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35"
-      db: postgresql
-    - TOX_ENV: "py35-postgres-pg8000-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35-x64"
-      db: postgresql
-    - TOX_ENV: "py36-postgres-pg8000-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36"
-      db: postgresql
-    - TOX_ENV: "py36-postgres-pg8000-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36-x64"
-      db: postgresql
-    - TOX_ENV: "py27-postgres-pyodbc-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27-x64"
-      db: postgresql
-    - TOX_ENV: "py34-postgres-pyodbc-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34-x64"
-      db: postgresql
-    - TOX_ENV: "py27-sqlite-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27"
-    - TOX_ENV: "py27-sqlite-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27-x64"
-    - TOX_ENV: "py34-sqlite-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34"
-    - TOX_ENV: "py34-sqlite-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34-x64"
-    - TOX_ENV: "py35-sqlite-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35"
-    - TOX_ENV: "py35-sqlite-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35-x64"
-    - TOX_ENV: "py36-sqlite-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36"
-    - TOX_ENV: "py36-sqlite-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36-x64"
-    - TOX_ENV: "py27-sqlite-memory-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "2.7"
-      PYTHON_HOME: "C:\\Python27"
-    - TOX_ENV: "py34-sqlite-memory-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.4"
-      PYTHON_HOME: "C:\\Python34-x64"
-    - TOX_ENV: "py35-sqlite-memory-w32"
-      PYTHON_ARCH: "32"
-      PYTHON_VERSION: "3.5"
-      PYTHON_HOME: "C:\\Python35"
-    - TOX_ENV: "py36-sqlite-memory-w32"
-      PYTHON_ARCH: "64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_HOME: "C:\\Python36-x64"
 
 install:
   # Ensure we use the right python version
@@ -270,24 +50,6 @@ install:
   - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
   - "pip --version"
   - "pip install tox ppu"
-  # List ODBC drivers
-  - ps: Get-OdbcDriver -Platform 32-bit | Select-Object -ExpandProperty Name
-  - ps: Get-OdbcDriver -Platform 64-bit | Select-Object -ExpandProperty Name
-  # Enable TCP for mssql
-  - ps: |
-      [reflection.assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo") | Out-Null
-      [reflection.assembly]::LoadWithPartialName("Microsoft.SqlServer.SqlWmiManagement") | Out-Null
-      $serverName = $env:COMPUTERNAME
-      $instanceName = 'SQL2014'
-      $smo = 'Microsoft.SqlServer.Management.Smo.'
-      $wmi = new-object ($smo + 'Wmi.ManagedComputer')
-      $uri = "ManagedComputer[@Name='$serverName']/ServerInstance[@Name='$instanceName']/ServerProtocol[@Name='Tcp']"
-      $Tcp = $wmi.GetSmoObject($uri)
-      $Tcp.IsEnabled = $true
-      $TCP.alter()
-      Set-Service SQLBrowser -StartupType Manual
-      Start-Service SQLBrowser
-      Start-Service "MSSQL`$$instanceName"
 
 # Not a C project, so no build step
 build: false
